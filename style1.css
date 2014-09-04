@@ -1,0 +1,50 @@
+//smartbar styling 
+
+.content{
+    background-color: red;
+     height: 300px;
+}
+.smartbar-text{
+    color: red;
+    float:left;
+    margin-left: 400px;
+    font-size: 20px;
+    
+   
+   
+}
+#smartbar_email_address{
+     width: 250px;
+     position: relative;
+    
+    
+    
+}
+.sb_content{
+    background-color: #d3d3d3;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+.smartbar-submit{
+   
+    clear:both;
+    background-color:#0f52ba !important;
+    color: #fff !important;
+    border-bottom-color: #0039a1 !important;
+    border-radius:10px;
+   
+    padding: 3px;
+    
+}
+.input{
+    margin-right: 200px;
+}
+.sb_wrapper
+{
+   padding: 15px;
+   margin: 0 auto;      
+}
+.input{
+   text-align: center;
+}
