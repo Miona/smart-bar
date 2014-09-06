@@ -1,8 +1,12 @@
 //smartbar styling 
-
-.content{
+.smartbar-popup{
+    z-index: 0; 
+    position: fixed; 
+    background-color: rgb(240, 240, 240) ! important;
+}
+.sb_content{
     background-color: red;
-     height: 300px;
+    margin-top: 32px;
 }
 .smartbar-text{
     color: red;
@@ -14,14 +18,15 @@
    
 }
 #smartbar_email_address{
-     width: 250px;
+    
      position: relative;
+     padding: 5px;
     
     
     
 }
 .sb_content{
-    background-color: #d3d3d3;
+    background-color: #eeeee8;
     position: fixed;
     width: 100%;
     top: 0;
@@ -29,12 +34,12 @@
 .smartbar-submit{
    
     clear:both;
-    background-color:#0f52ba !important;
-    color: #fff !important;
-    border-bottom-color: #0039a1 !important;
-    border-radius:10px;
+    background-color:#0f52ba;
+    color: #fff;
+   // border-bottom-color: #0039a1 !important;
+     padding: 6px;
    
-    padding: 3px;
+    
     
 }
 .input{

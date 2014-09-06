@@ -17,14 +17,18 @@ add_action (
 add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
 
 
+
 function prefix_add_my_stylesheet() {
     // Respects SSL, Style.css is relative to the current file
     wp_register_style( 'prefix-style', plugins_url('style1.css', __FILE__) );
     wp_enqueue_style( 'prefix-style',plugins_url('style1.css', __FILE__) );
+    wp_enqueue_script( 'prefix-style',plugins_url('close.js', __FILE__) );
 }
 
+
+
 function smartbar_display() {?>
- <div id="smartbar-popup" class="smartbar-popup" style="z-index: 9999999; position: fixed; background-color: rgb(240, 240, 240) ! important;">
+ <div id="smartbar-popup" class="smartbar-popup">
     <a class="smartbar-link" target="_blank" href="http://sumome.com/?src=sm-ba-5a316e8bd2f8962ed11db73981cf8b18d2bdf43368ce276112d0408aee092ed1">
         
     </a>
@@ -38,37 +42,44 @@ function smartbar_display() {?>
                 <div class="smartbar-input">
                    
                         <div class="smartbar-text">
-                    <?php   if ( get_theme_mod('newtheme_smartbar_text') ) { ?>
-                        <p><?php echo esc_html_e(get_theme_mod('newtheme_smartbar_text')); ?></p>
+                    <?php   if ( get_theme_mod('sb_smartbar_text') ) { ?>
+                        <p><?php echo esc_html_e(get_theme_mod('sb_smartbar_text')); ?></p>
                     <?php } else { ?>
-                        <p><?php echo esc_html_e('Join our newsletter today for free','newtheme'); ?></p>
+                        <p><?php echo esc_html_e('Join our newsletter today for free','sb'); ?></p>
                     <?php } ?>
                 </div>
                   <div class="input">     
-                    <input id="smartbar_email_address" 
+                   <input id="smartbar_email_address" 
                            type="text"
-                           placeholder="<?php   if ( get_theme_mod('newtheme_smartbar_placeholder') ) { ?> <?php echo esc_html_e(get_theme_mod('newtheme_smartbar_placeholder')); ?>
-                                       
-                                        <?php } else { ?>
-                                        <?php echo esc_html_e('xyz','newtheme'); ?>
-                                        <?php } ?>"
+                           placeholder="<?php if ( get_theme_mod('sb_smartbar_desc') !='' ) {  ?>
+                  <?php echo esc_html(get_theme_mod('sb_smartbar_desc')); ?>
+                           <?php } else { ?> <?php esc_html_e('Enter your e-mail', 'sb') ?> 
+                                           <?php } ?>"
+                         
                            name="smartbar_email_address" value="">
                     </input>
+                         
+                                        
+                                        
+                                        
+                                        
                      <button class="smartbar-submit" type="submit" >
-                        <?php   if ( get_theme_mod('newtheme_smartbar_button_text') ) { ?>
-                                        <?php echo esc_html_e(get_theme_mod('newtheme_smartbar_button_text')); ?>
+                        <?php   if ( get_theme_mod('sb_smartbar_button_text') ) { ?>
+                                        <?php echo esc_html_e(get_theme_mod('sb_smartbar_button_text')); ?>
                                         <?php } else { ?>
-                                        <?php echo esc_html_e('Subscribe','newtheme'); ?>
+                                        <?php echo esc_html_e('Subscribe','sb'); ?>
                                         <?php } ?>
                     </button>
                    </div>
                    
                     <div class="color">
-                         <?php  get_theme_mod('newtheme_smartbar_button_color') ?>
+                         <?php  get_theme_mod('sb_smartbar_button_color') ?>
                         
                     </div>
                 </div>
-            
+            <div class="close">
+                close
+            </div>
         </div>
     </div>
     </div>      
