@@ -33,81 +33,59 @@ function sb_customize_register( $wp_customize ) {
         }
         
 //Add smartbar 
-$wp_customize->add_section('sb_smartbar', array(
+$wp_customize->add_section('smartbar', array(
         'title' => __('Smartbar', 'sb'), 
         'priority' => 0,
     ));
 
 //Add smartbar text
-  $wp_customize->add_setting('sb_smartbar_text',array(
+  $wp_customize->add_setting('sb_text',array(
         'default'=>'',
          'sanitize_callback'=>'sanitize_text_field',
          'transport'=>'postmessage',
      ));
      $wp_customize->add_control(new sb_customize_textarea_control($wp_customize,'sb_customize_textarea_controls',array(
          'label'=>__('Smartbar text','sb'),
-         'section'=>'sb_smartbar',
-         'settings'=>'sb_smartbar_text',
+         'section'=>'smartbar',
+         'settings'=>'sb_text',
          'priority'=>'1',
      )));
      
-     
-     $wp_customize->add_setting('sb_smartbar_desc_text_color', array(
-         'sanitize_callback' => 'sb_sanitize_hex_color',
-         'sanitize_js_callback' => 'sb_sanitize_escaping',
+      $wp_customize->add_setting('form_input', array('default' => '',
+        'sanitize_js_callback' => 'sb_sanitize_escaping',
         'transport' => 'postMessage',
     ));
-     
-     $wp_customize->add_control( 
-	new WP_Customize_Color_Control( 
-	$wp_customize, 
-	'sb_smartbar_desc_text_color', 
-	array(
-		'label'      => __( 'Smartbar text color', 'sb' ),
-		'section'    => 'sb_smartbar',
-		'settings'   => 'sb_smartbar_desc_text_color',
-	) ) 
-);
 
-     $wp_customize->add_setting('sb_smartbar_desc',array(
-        'default'=>'',
-         'sanitize_callback'=>'sanitize_text_field',
-         'transport'=>'postmessage',
-     ));
-     $wp_customize->add_control(new sb_customize_textarea_control($wp_customize,'sb_customize_textarea_control',array(
-         'label'=>__('Code Area','sb'),
-         'section'=>'sb_smartbar',
-         'settings'=>'sb_smartbar_desc',
-         'priority'=>'3',
-     )));
+    $wp_customize->add_control(new sb_customize_textarea_control($wp_customize, 'home_featured_right', array(
+        'label' => __('Form Input Area', 'sb'),
+        'section' => 'smartbar',
+        'settings' => 'form_input',
+        'priority' => 6,
+    )));
      
-//Add placeholder text     
-/*$wp_customize->add_setting('sb_smartbar_placeholder', array(
-        'transport' => 'postMessage',
-    ));
-     
-     $wp_customize->add_control('sb_smartbar_placeholder', array(
-        'label' => __('Smart bar Placeholder', 'sb'),
-        'section' => 'sb_smartbar',
-        'settings' => 'sb_smartbar_placeholder',
-         'type'=>'text',
-        'priority' => 2,
-    ));*/
-     
+    
+
      
 //Add button text    
-$wp_customize->add_setting('sb_smartbar_button_text', array(
+$wp_customize->add_setting('sb_button_text', array(
         'transport' => 'postMessage',
     ));
      
-     $wp_customize->add_control('sb_smartbar_button_text', array(
+     $wp_customize->add_control('sb_button_text', array(
         'label' => __('Smartbar button', 'sb'),
-        'section' => 'sb_smartbar',
-        'settings' => 'sb_smartbar_button_text',
+        'section' => 'smartbar',
+        'settings' => 'sb_button_text',
          'type'=>'text',
-        'priority' => 3,
+        'priority' => '4',
     ));
-     $wp_customize->add_setting('sb_smartbar_background_color', array(
+    
+     //Display options section
+$wp_customize->add_section('display', array(
+        'title' => __('Sb Display Options', 'sb'), 
+       
+    ));
+
+ $wp_customize->add_setting('sb_background_color', array(
          
          'sanitize_callback' => 'sb_sanitize_hex_color',
          'sanitize_js_callback' => 'sb_sanitize_escaping',
@@ -117,15 +95,15 @@ $wp_customize->add_setting('sb_smartbar_button_text', array(
      $wp_customize->add_control( 
 	new WP_Customize_Color_Control( 
 	$wp_customize, 
-	'sb_smartbar_background_color', 
+	'sb_background_color', 
 	array(
 		'label'      => __( 'Button Color', 'sb' ),
-		'section'    => 'sb_smartbar',
-		'settings'   => 'sb_smartbar_background_color',
+		'section'    => 'display',
+		'settings'   => 'sb_background_color',
 	) ) 
 );
      
-     $wp_customize->add_setting('sb_smartbar_text_color', array(
+     $wp_customize->add_setting('sb_button_text_color', array(
          'sanitize_callback' => 'sb_sanitize_hex_color',
          'sanitize_js_callback' => 'sb_sanitize_escaping',
         'transport' => 'postMessage',
@@ -134,14 +112,49 @@ $wp_customize->add_setting('sb_smartbar_button_text', array(
      $wp_customize->add_control( 
 	new WP_Customize_Color_Control( 
 	$wp_customize, 
-	'sb_smartbar_text_color', 
+	'sb_button_text_color', 
 	array(
-		'label'      => __( 'Text color', 'sb' ),
-		'section'    => 'sb_smartbar',
-		'settings'   => 'sb_smartbar_text_color',
+		'label'      => __( 'Button text color', 'sb' ),
+		'section'    => 'display',
+		'settings'   => 'sb_button_text_color',
+	) ) 
+);
+     
+     $wp_customize->add_setting('sb_color', array(
+         
+         'sanitize_callback' => 'sb_sanitize_hex_color',
+         'sanitize_js_callback' => 'sb_sanitize_escaping',
+        'transport' => 'postMessage',
+    ));
+     
+     $wp_customize->add_control( 
+	new WP_Customize_Color_Control( 
+	$wp_customize, 
+	'sb_color', 
+	array(
+		'label'      => __( 'Section Color', 'sb' ),
+		'section'    => 'display',
+		'settings'   => 'sb_color',
 	) ) 
 );
 
+     $wp_customize->add_setting('sb_desc_text_color', array(
+         'sanitize_callback' => 'sb_sanitize_hex_color',
+         'sanitize_js_callback' => 'sb_sanitize_escaping',
+        'transport' => 'postMessage',
+    ));
+     
+     $wp_customize->add_control( 
+	new WP_Customize_Color_Control( 
+	$wp_customize, 
+	'sb_desc_text_color', 
+	array(
+		'label'      => __( 'Smartbar text color', 'sb' ),
+		'section'    => 'display',
+		'settings'   => 'sb_desc_text_color',
+                'priority'   => '2',
+	) ) 
+); 
 }
 add_action( 'customize_register', 'sb_customize_register' );
 
@@ -153,26 +166,34 @@ function sb_sanitize_hex_color($color){
 }
 
 function sb_background_color(){
-$button_background= get_theme_mod('sb_smartbar_background_color');
-$button_text= get_theme_mod('sb_smartbar_text_color');
-$desc_text= get_theme_mod('sb_smartbar_desc_text_color');
+$button_background= get_theme_mod('sb_background_color');
+$button_text_color= get_theme_mod('sb_button_text_color');
+$desc_text= get_theme_mod('sb_desc_text_color');
+$sb_position= get_theme_mod('sb_desc_text_color');
+$sb_section_color= get_theme_mod('sb_color');
+
 ?>
 <style rel="text/css" id="background-css">
-    <?php if (get_theme_mod('sb_smartbar_background_color')) { ?>
-    .smartbar-submit{
-        background: <?php echo $button_background; ?>
+    <?php if (get_theme_mod('sb_color')) { ?>
+    .sb_content{
+        background-color:<?php echo $sb_section_color; ?>
+    } 
+    <?php } ?>
+    <?php if (get_theme_mod('sb_background_color')) { ?>
+    .sb_wrapper_right input[type="submit"]{
+        background:<?php echo $button_background; ?>
     } 
     <?php } ?>
     
-    <?php if (get_theme_mod('sb_smartbar_text_color')) { ?>
-    .smartbar-submit{
-        color: <?php echo $button_text; ?>
+    <?php if (get_theme_mod('sb_button_text_color')) { ?>
+    .sb_wrapper_right input[type="submit"]
+{        color:<?php echo $button_text_color; ?>
     } 
     <?php } ?>
     
-    <?php if (get_theme_mod('sb_smartbar_desc_text_color')) { ?>
-    .smartbar-text{
-        color: <?php echo $desc_text; ?>
+    <?php if (get_theme_mod('sb_desc_text_color')) { ?>
+    .sb-text{
+        color:<?php echo $desc_text; ?>
     } 
     <?php } ?>
 
@@ -186,6 +207,9 @@ function sb_sanitize_escaping($input){
     $input= esc_attr($input);
     return $input;
 }
+
+
+
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.

@@ -1,55 +1,46 @@
 //smartbar styling 
-.smartbar-popup{
-    z-index: 0; 
-    position: fixed; 
-    background-color: rgb(240, 240, 240) ! important;
-}
-.sb_content{
-    background-color: red;
-    margin-top: 32px;
-}
-.smartbar-text{
-    color: red;
-    float:left;
-    margin-left: 400px;
-    font-size: 20px;
-    
-   
-   
-}
-#smartbar_email_address{
-    
-     position: relative;
-     padding: 5px;
-    
-    
+.clearfix:before, .clearfix:after {
+    content:"";
+    display:table;
     
 }
-.sb_content{
-    background-color: #eeeee8;
-    position: fixed;
-    width: 100%;
-    top: 0;
-}
-.smartbar-submit{
-   
+.clearfix:after{
     clear:both;
-    background-color:#0f52ba;
-    color: #fff;
-   // border-bottom-color: #0039a1 !important;
-     padding: 6px;
-   
-    
-    
 }
-.input{
-    margin-right: 200px;
+
+.sb_content{
+     width: 100%;
+    top: 0;
+    left:0;
+     background-color: #eeeee8;
+     position: fixed;
+     margin-top:32px;
 }
 .sb_wrapper
 {
-   padding: 15px;
+   max-width: 1200px;
    margin: 0 auto;      
+   
 }
+.sb_wrapper_left, .sb_wrapper_right{
+    float:left;
+    width:50%;
+    padding:10px;
+    
+}
+.sb-input{
+    float: left;
+}
+
 .input{
-   text-align: center;
+    float: right;
+}
+
+.sb_wrapper_right input[type="text"]{
+    width:58%;
+    padding:10px;
+}
+.sb_wrapper_right input[type="submit"]{
+    padding:10px;
+    width:40%;
 }
