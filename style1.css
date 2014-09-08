@@ -28,6 +28,10 @@
     padding:10px;
     
 }
+
+.sb_wrapper_right p{
+    margin: 0px;
+}
 .sb-input{
     float: left;
 }
@@ -37,10 +41,21 @@
 }
 
 .sb_wrapper_right input[type="text"]{
-    width:58%;
+   
     padding:10px;
+    width: 58%;
+    
 }
 .sb_wrapper_right input[type="submit"]{
     padding:10px;
-    width:40%;
+    width:25%;
+    margin-left: 10px;
+}
+
+.sb_close{
+    top:0;
+}
+
+.fa-close{
+    float: right;
 }

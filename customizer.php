@@ -66,19 +66,7 @@ $wp_customize->add_section('smartbar', array(
     
 
      
-//Add button text    
-$wp_customize->add_setting('sb_button_text', array(
-        'transport' => 'postMessage',
-    ));
-     
-     $wp_customize->add_control('sb_button_text', array(
-        'label' => __('Smartbar button', 'sb'),
-        'section' => 'smartbar',
-        'settings' => 'sb_button_text',
-         'type'=>'text',
-        'priority' => '4',
-    ));
-    
+
      //Display options section
 $wp_customize->add_section('display', array(
         'title' => __('Sb Display Options', 'sb'), 
@@ -155,6 +143,29 @@ $wp_customize->add_section('display', array(
                 'priority'   => '2',
 	) ) 
 ); 
+     $settings='';
+     $wp_customize->add_setting( 'sb_section_position' ,
+			array(
+//				'default' => $settings['position'],
+//				'type'    => 'option',
+			)
+		);
+
+		$wp_customize->add_control(
+			'sb_section_position',
+			array(
+				'label'    => __( 'Section Position', 'sb' ),
+				'section'  => 'display',
+				'settings' => 'sb_section_position',
+				'type'     => 'radio',
+				'priority' => 3,
+				'choices' => array(
+					'1' => __( 'Above', 'sb' ),
+					'2' => __( 'Below', 'sb' ),
+				),
+			)
+		);
+     
 }
 add_action( 'customize_register', 'sb_customize_register' );
 
@@ -171,7 +182,7 @@ $button_text_color= get_theme_mod('sb_button_text_color');
 $desc_text= get_theme_mod('sb_desc_text_color');
 $sb_position= get_theme_mod('sb_desc_text_color');
 $sb_section_color= get_theme_mod('sb_color');
-
+$sb_section_position=get_theme_mod('sb_section_position');
 ?>
 <style rel="text/css" id="background-css">
     <?php if (get_theme_mod('sb_color')) { ?>
@@ -194,6 +205,19 @@ $sb_section_color= get_theme_mod('sb_color');
     <?php if (get_theme_mod('sb_desc_text_color')) { ?>
     .sb-text{
         color:<?php echo $desc_text; ?>
+    } 
+    <?php } ?>
+    
+    <?php if (get_theme_mod('sb_section_position') =='1' ){ ?>
+    .sb_content{
+        top:0;
+    } 
+    <?php } ?>
+    
+    <?php if (get_theme_mod('sb_section_position') =='2' ){ ?>
+    .sb_content{
+        bottom:0;
+        top:auto;
     } 
     <?php } ?>
 
