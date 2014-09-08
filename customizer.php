@@ -1,8 +1,8 @@
 <?php
 /**
- * Smartbar Plugin Customizer
+ * Subscription Bar Plugin Customizer
  *
- * @package Smartbar
+ * @package Subscription
  */
 
 /**
@@ -34,7 +34,7 @@ function sb_customize_register( $wp_customize ) {
         
 //Add smartbar 
 $wp_customize->add_section('smartbar', array(
-        'title' => __('Smartbar', 'sb'), 
+        'title' => __('Subscription Bar', 'sb'), 
         'priority' => 0,
     ));
 
@@ -45,7 +45,7 @@ $wp_customize->add_section('smartbar', array(
          'transport'=>'postmessage',
      ));
      $wp_customize->add_control(new sb_customize_textarea_control($wp_customize,'sb_customize_textarea_controls',array(
-         'label'=>__('Smartbar text','sb'),
+         'label'=>__('Subscription text','sb'),
          'section'=>'smartbar',
          'settings'=>'sb_text',
          'priority'=>'1',
@@ -71,7 +71,7 @@ $wp_customize->add_section('smartbar', array(
      
      
 $wp_customize->add_section('display', array(
-        'title' => __('Sb Display Options', 'sb'), 
+        'title' => __('Subscription Bar Display Options', 'sb'), 
        
     ));
 $settings='';
@@ -161,7 +161,7 @@ $settings='';
 	$wp_customize, 
 	'sb_desc_text_color', 
 	array(
-		'label'      => __( 'Smartbar text color', 'sb' ),
+		'label'      => __( 'Subscription text color', 'sb' ),
 		'section'    => 'display',
 		'settings'   => 'sb_desc_text_color',
                 'priority'   => '2',

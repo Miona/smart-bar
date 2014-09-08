@@ -1,6 +1,6 @@
 <?php
    /*
-   Plugin Name: Smart Bar
+   Plugin Name: Subscription Bar
    Plugin URI: http://www.ideaboxthemes.com
    Description: A plugin to display smart bar for subscribers on top.
    Version: 1.0
