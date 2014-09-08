@@ -34,7 +34,7 @@ function sb_display() {?>
   
 
     <div class="sb_content clearfix">
-        <div class="sb_close"> 
+        <div class="sb_close clearfix"> 
             <a class="sb_close_icon"><i class="fa fa-close"></i></a>
         <div class="sb_wrapper clearfix">  
             

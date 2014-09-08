@@ -16,17 +16,20 @@
      position: fixed;
      margin-top:32px;
      z-index: 99999;
+   
 }
 .sb_wrapper
 {
    max-width: 1200px;
-   margin: 0 auto;      
+   margin: 0 auto;    
+  
    
 }
 .sb_wrapper_left, .sb_wrapper_right{
     float:left;
-    width:50%;
+    width:48%;
     padding:10px;
+   
     
 }
 
