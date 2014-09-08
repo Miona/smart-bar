@@ -68,10 +68,34 @@ $wp_customize->add_section('smartbar', array(
      
 
      //Display options section
+     
+     
 $wp_customize->add_section('display', array(
         'title' => __('Sb Display Options', 'sb'), 
        
     ));
+$settings='';
+     $wp_customize->add_setting( 'sb_section_position' ,
+			array(
+//				'default' => $settings['position'],
+//				'type'    => 'option',
+			)
+		);
+
+		$wp_customize->add_control(
+			'sb_section_position',
+			array(
+				'label'    => __( 'Section Position', 'sb' ),
+				'section'  => 'display',
+				'settings' => 'sb_section_position',
+				'type'     => 'radio',
+				'priority' => 1,
+				'choices' => array(
+					'1' => __( 'Above', 'sb' ),
+					'2' => __( 'Below', 'sb' ),
+				),
+			)
+		);
 
  $wp_customize->add_setting('sb_background_color', array(
          
@@ -143,29 +167,7 @@ $wp_customize->add_section('display', array(
                 'priority'   => '2',
 	) ) 
 ); 
-     $settings='';
-     $wp_customize->add_setting( 'sb_section_position' ,
-			array(
-//				'default' => $settings['position'],
-//				'type'    => 'option',
-			)
-		);
-
-		$wp_customize->add_control(
-			'sb_section_position',
-			array(
-				'label'    => __( 'Section Position', 'sb' ),
-				'section'  => 'display',
-				'settings' => 'sb_section_position',
-				'type'     => 'radio',
-				'priority' => 3,
-				'choices' => array(
-					'1' => __( 'Above', 'sb' ),
-					'2' => __( 'Below', 'sb' ),
-				),
-			)
-		);
-     
+    
 }
 add_action( 'customize_register', 'sb_customize_register' );
 
